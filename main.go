@@ -22,7 +22,7 @@ func getLinesChannel(f io.ReadCloser) <- chan string {
 			n, err := f.Read(data)
 			if err != nil {
 				break;
-			}
+		}
 
 			data = data[:n]
 			if i := bytes.IndexByte(data, '\n'); i != -1 {
@@ -53,7 +53,7 @@ func main() {
 		conn, err := listener.Accept()
 		if (err != nil) {
 			log.Fatal("error", "error", err)
-		}
+	}
 
 		for line := range getLinesChannel(conn) {
 			fmt.Printf("read: %s\n", line)
